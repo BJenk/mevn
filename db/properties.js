@@ -27,6 +27,9 @@ function createProperty(property) {
 function getOneProperty(propertyID){
     return properties.find({ "_id": ObjectId(propertyID) })
 }
+function getOneTodoItem(propertyID){
+    return properties.find({"_id": ObjectId(propertyID)})
+}
 
 function deleteProperty(propertyID){
     return properties.findOneAndDelete({ "_id": ObjectId(propertyID) })
@@ -36,5 +39,6 @@ module.exports = {
     getAll,
     createProperty,
     getOneProperty,
-    deleteProperty
+    deleteProperty,
+    getOneTodoItem
 };

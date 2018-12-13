@@ -81,6 +81,18 @@ app.get('/properties/:_id', (req,res) => {
     })
 })
 
+app.get('/properties/:_id/:todoIndex', (req,res) => {
+    //res.send('test')
+    //res.send(req.params._id + " " + req.params.todoIndex)
+    properties.getOneTodoItem(req.params._id).then((property) => {
+        var foo = property
+        res.json(foo[0].todos[req.params.todoIndex])
+    })
+    // properties.getOneProperty(req.params._id).then((property) => {
+    //     res.json(property)
+    // })
+})
+
 //DELETE PROPERTY BY ID
 app.delete('/properties/:_id', (req, res) => {
     properties.deleteProperty(req.params._id).then((property)=>{

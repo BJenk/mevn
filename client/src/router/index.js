@@ -2,12 +2,10 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import PropertiesList from '@/components/PropertiesList';
 import Property from '@/components/Property'
+import TodoList from '@/components/TodoList'
 
 Vue.use(VueRouter);
-
-
 const Bar = { template: '<div>bar {{ $route.params.id }} </div>' }
-
 const routes = [
   { 
     path: '/properties',
@@ -15,7 +13,13 @@ const routes = [
   },
   { 
     path: '/properties/:propertyID',
-    component: Property 
+    component: Property,
+    children :[
+      {
+        path: '/properties/:propertyID/:todoIndex',
+        component: TodoList
+      }
+    ]
   },
   { 
     path: '/bar/:id',
